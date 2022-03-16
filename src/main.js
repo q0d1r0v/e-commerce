@@ -8,9 +8,11 @@ import Toast from "vue-toastification";
 import VuetifyOverlay from "vuetify-overlay";
 import "vue-toastification/dist/index.css";
 
+const options = {};
+
 Vue.config.productionTip = false;
 
-Vue.use(Toast);
+Vue.use(Toast, options);
 Vue.use(VuetifyOverlay);
 
 new Vue({

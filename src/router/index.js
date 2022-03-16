@@ -1,32 +1,51 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import notFoundPage from "../views/notFoundPage";
+const home = () => import("../views/home");
+const searchPage = () => import("../views/appbar-pages/catolog-page");
+const likedPage = () => import("../views/appbar-pages/liked-page");
+const bagPage = () => import("../views/appbar-pages/bag-page");
+const personalAccountPage = () =>
+  import("../views/appbar-pages/personal-account-page");
+const notFoundPage = () => import("../views/not-found-page/not-fount-page");
+const itemsPage = () => import("../views/items-page/items-page");
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "*",
-    name: "notFoundPage",
-    component: notFoundPage,
-  },
-  {
     path: "/",
     name: "Home",
-    component: Home,
+    component: home,
   },
   {
-    path: "/users",
-    name: "Users",
-    component: () =>
-      import(/* webpackChunkName: "Users" */ "../views/users-page"),
+    path: "/catolog",
+    name: "Catolog",
+    component: searchPage,
   },
   {
-    path: "/login",
-    name: "Login",
-    component: () =>
-      import(/* webpackChunkName: "Login" */ "../views/login-page"),
+    path: "/favourite",
+    name: "Favourite",
+    component: likedPage,
+  },
+  {
+    path: "/add-to-cart",
+    name: "bagPage",
+    component: bagPage,
+  },
+  {
+    path: "/personal-account",
+    name: "personalAccount",
+    component: personalAccountPage,
+  },
+  {
+    path: "/items",
+    name: "items",
+    props: true,
+    component: itemsPage,
+  },
+  {
+    path: "*",
+    component: notFoundPage,
   },
 ];
 
